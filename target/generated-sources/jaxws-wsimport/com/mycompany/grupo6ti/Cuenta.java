@@ -28,8 +28,8 @@ public interface Cuenta {
      * @param id
      * @return
      *     returns com.mycompany.grupo6ti.CuentaBancoArray
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")
