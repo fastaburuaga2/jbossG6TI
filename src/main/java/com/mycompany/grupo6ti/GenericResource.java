@@ -35,7 +35,7 @@ public class GenericResource {
   @Produces("application/json")
   @Path("/algo")
   public String getTest() {
-    return "[\"Test\", \"Complete2222\"]";
+    return "[\"Test\", \"nuevoo\"]";
   }
     
     @GET
@@ -43,23 +43,11 @@ public class GenericResource {
   @Path("/cuenta")
   public CuentaBancoArray getCuenta() throws BadParametersException, ErrorException {
       
+    Cuenta_Service sc = new Cuenta_Service();
     
-    Cuenta cuenta = new Cuenta() {
-
-        @Override
-        public CuentaBancoArray getCuenta(String id) throws BadParametersException, ErrorException {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public Cartola getCartola(GetCartola cartola) throws BadParametersException, ErrorException {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    };
+    Cuenta c = sc.getCuentaPort();
     
-    CuentaBancoArray c = cuenta.getCuenta("556489daefb3d7030091bab4");
-    
-    return c;
+    return c.getCuenta("556489daefb3d7030091bab4");
   }
   
     /**
