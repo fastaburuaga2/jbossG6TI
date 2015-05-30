@@ -44,8 +44,8 @@ public interface Cuenta {
      * @param cartola
      * @return
      *     returns com.mycompany.grupo6ti.Cartola
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")

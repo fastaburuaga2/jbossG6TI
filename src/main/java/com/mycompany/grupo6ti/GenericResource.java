@@ -21,6 +21,17 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+ 
+import javax.net.ssl.HttpsURLConnection;
+import javax.ws.rs.DELETE;
 /**
  * REST Web Service
  *
@@ -45,6 +56,94 @@ public class GenericResource {
     return "[\"Test\", \"Funcionando Bien\"]";
   }
     
+  /////SERVICIOS ORDEN DE COMPRA
+  
+  
+    @PUT
+  @Produces("application/json")
+  @Path("/nuevaOc/{canal}/{cant}/{sku}/{proveedor}/{precio}/{notas}")
+  public String hacerOrdenCompra(@PathParam("canal") String canal,
+                                @PathParam("cant") String cant,
+                                @PathParam("sku") String sku,
+                                @PathParam("proveedor") String proveedor,
+                                @PathParam("precio") String precio,
+                                @PathParam("notas") String notas) throws MalformedURLException, IOException
+                                  {
+      
+    URL url = new URL("http://chiri.ing.puc.cl/atenea/crear?Canal="
+            +canal+"&Cantidad="
+            +cant+"&Sku="
+            +sku+"&Proveedor="
+            +proveedor+"&Precio="
+            +precio+"&Notas=" + notas);
+    
+    HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+    httpCon.setDoOutput(true);
+    httpCon.setRequestMethod("PUT");
+    OutputStreamWriter out = new OutputStreamWriter(
+        httpCon.getOutputStream());
+    
+    out.write("Resource content");
+    out.close();
+    httpCon.getInputStream();                    
+                                      
+                                      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+  @POST
+  @Produces("application/json")
+  @Path("/recepcionarOc/{id}")
+  public String recepcionarOc(@PathParam("id") String id)
+                                  {
+      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+    @POST
+  @Produces("application/json")
+  @Path("/rechazarOc/{id}/{rechazo}")
+  public String rechazarOc(@PathParam("id") String id, 
+                            @PathParam("rechazo") String rechazo)
+                                  {
+      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+    @DELETE
+  @Produces("application/json")
+  @Path("/anularOc/{id}/{motivo}")
+  public String anularOc(@PathParam("id") String id, 
+                            @PathParam("motivo") String motivo)
+                                  {
+      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+    @GET
+  @Produces("application/json")
+  @Path("/anularOc/{id}")
+  public String obtenerOc(@PathParam("id") String id)
+                            
+                                  {
+      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+  @POST //?
+  @Produces("application/json")
+  @Path("/despacharProducto/{id}")
+  public String despacharOc(@PathParam("id") String id)
+                            
+                                  {
+      
+    return "[\"Test\", \"Funcionando Bien\"]";
+  }
+  
+  
+  
+  
+  /////Servicios Banco:
     @GET
   @Produces("application/json")
   @Path("/cuenta/{id}")
