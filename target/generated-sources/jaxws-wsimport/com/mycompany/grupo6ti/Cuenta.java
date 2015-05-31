@@ -28,8 +28,8 @@ public interface Cuenta {
      * @param id
      * @return
      *     returns com.mycompany.grupo6ti.CuentaBancoArray
-     * @throws ErrorException
      * @throws BadParametersException
+     * @throws ErrorException
      */
     @WebMethod
     @WebResult(partName = "return")
@@ -44,8 +44,8 @@ public interface Cuenta {
      * @param cartola
      * @return
      *     returns com.mycompany.grupo6ti.Cartola
-     * @throws ErrorException
      * @throws BadParametersException
+     * @throws ErrorException
      */
     @WebMethod
     @WebResult(partName = "return")
