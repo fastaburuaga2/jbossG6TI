@@ -21,16 +21,14 @@
             <version>3.0.11.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.2.5</version>
-            <type>jar</type>
+            <groupId>grupoid2</groupId>
+            <artifactId>artifact2</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.2.6</version>
-            <type>jar</type>
+            <groupId>grupoid</groupId>
+            <artifactId>artifactid</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
