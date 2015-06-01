@@ -103,7 +103,7 @@ public class GenericResource {
         // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
          conn.setDoInput(true);
          
-         
+         /*
            String ss = "{\n" +
            "  \"__v\": 0,\n" +
            "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" +
@@ -119,7 +119,7 @@ public class GenericResource {
            "  \"cantidadDespachada\": 0,\n" +
            "  \"cantidad\": 123,\n" +
            "  \"canal\": \"b2b\"\n" +
-           "}";
+           "}";*/
 
             String sss = "{\n" +
            "  \"__v\": 0,\n" +
@@ -137,7 +137,8 @@ public class GenericResource {
            "  \"cantidad\": \"" +cant+ "\",\n" +
            "  \"canal\": \"" +canal + "\"\n" +
            "}";
-           String s = "{\n" +
+           /*
+            String s = "{\n" +
            "  \"__v\": 0,\n" +
            "  \"cliente\": "+cliente+"," +
            "  \"proveedor\": "+proveedor+"," +
@@ -147,6 +148,7 @@ public class GenericResource {
            "  \"canal\": "+canal+"," +
            "  \"fechaEntrega\": "+fechae+
            "}";
+            */
            
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
         out.write(sss);
@@ -206,10 +208,50 @@ public class GenericResource {
   @POST
   @Produces("application/json")
   @Path("/recepcionarOc/{id}")
-  public String recepcionarOc(@PathParam("id") String id)
+  public String recepcionarOc(@PathParam("id") String id) throws MalformedURLException, IOException
                                   {
+                                      
+                try{                     
+		URL url = new URL("http://chiri.ing.puc.cl/recepcionar/" + id);
+		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+                InputStream is;
+		//add reuqest header
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Content-Type", "application/json");
+		//con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+ 
+		
+		con.setDoOutput(true);
+		OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
+                out.write("{\n" + "  \"id\": \"" + id + "\"\n" + "}");
+                out.flush();
+                out.close();
+ 
+		
+                if (con.getResponseCode() >= 400) {
+                    is = con.getErrorStream();
+                } else {
+                 is = con.getInputStream();
+                  }
+		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+ 
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+                return response.toString();
+                }  catch (IOException e) {
+                    e.printStackTrace();
+                 } catch (Exception e) {
+                    e.printStackTrace();
+                  }
+		//print result
+		return "error";
+ 
       
-    return "[\"Test\", \"Funcionando Bien\"]";
+    
   }
   
     @POST
