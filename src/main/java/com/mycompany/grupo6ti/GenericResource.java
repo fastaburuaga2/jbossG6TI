@@ -25,13 +25,25 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
  
 import javax.net.ssl.HttpsURLConnection;
 import javax.ws.rs.DELETE;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 /**
  * REST Web Service
  *
@@ -74,57 +86,43 @@ public class GenericResource {
                                 @PathParam("fechae") String fechae)
                             throws MalformedURLException, IOException
                                   {
-      
-    URL url = new URL("http://chiri.ing.puc.cl/atenea/crear");
-    
-    HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-    httpCon.setDoOutput(true);
-    httpCon.setRequestMethod("PUT");
-    httpCon.setDoInput(true);
+      HttpClient client = new DefaultHttpClient();
+        HttpPut put = new HttpPut("http://chiri.ing.puc.cl/atenea/crear");
+        
+        try {
+          List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+          nameValuePairs.add(new BasicNameValuePair("cliente",
+              cliente));
+          nameValuePairs.add(new BasicNameValuePair("proveedor",
+              proveedor));
+          nameValuePairs.add(new BasicNameValuePair("sku",
+              sku));
+          nameValuePairs.add(new BasicNameValuePair("cantidad",
+              cant));
+          nameValuePairs.add(new BasicNameValuePair("precioUnitario",
+              precio));
+          nameValuePairs.add(new BasicNameValuePair("canal",
+              canal));
+          nameValuePairs.add(new BasicNameValuePair("fechaEntrega",
+              fechae));
+          
+          put.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-    
-    
-    httpCon.setRequestProperty("Content-Type", "application/json");
-    httpCon.setRequestProperty("Accept", "application/json");
-    OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
-     
-    
-        String ss = "{\n" +
-    "  \"__v\": 0,\n" +
-    "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" +
-    "  \"updated_at\": \"2015-05-30T21:41:52.435Z\",\n" +
-    "  \"cliente\": \"123\",\n" +
-    "  \"proveedor\": \"asd\",\n" +
-    "  \"sku\": \"123\",\n" +
-    "  \"_id\": \"556a2ea0ddb5bd0300215729\",\n" +
-    "  \"estado\": \"creada\",\n" +
-    "  \"fechaDespachos\": [],\n" +
-    "  \"fechaEntrega\": \"2072-07-02T11:10:55.222Z\",\n" +
-    "  \"precioUnitario\": 32,\n" +
-    "  \"cantidadDespachada\": 0,\n" +
-    "  \"cantidad\": 123,\n" +
-    "  \"canal\": \"b2b\"\n" +
-    "}";
-    
-    
-    String s = "{" +
-    "  \"cliente\": "+cliente+"," +
-    "  \"proveedor\": "+proveedor+"," +
-    "  \"sku\": "+sku+"," +
-    "  \"cantidad\": "+cant+"," +
-    "  \"precioUnitario\": "+precio+"," +
-    "  \"canal\": "+canal+"," +
-    "  \"fechaEntrega\": "+fechae+
-    "}";
+          HttpResponse response = client.execute(put);
+          BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+          String line = "";
+          while ((line = rd.readLine()) != null) {
+            System.out.println(line);
+          }
+          return line;
 
-    
-    out.write(s);
-    out.flush();
-    out.close();
-    httpCon.getInputStream();                    
-                                        
-    return httpCon.getResponseMessage();
+        } catch (IOException e) {
+          e.printStackTrace();
+          return "error";
+        }       
   }
+  
+  
   
   @POST
   @Produces("application/json")
