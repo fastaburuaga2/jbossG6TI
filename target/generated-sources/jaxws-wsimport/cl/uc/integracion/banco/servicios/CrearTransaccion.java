@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearTransaccion complex type.
+ * <p>Clase Java para crearTransaccion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearTransaccion">
@@ -40,7 +40,7 @@ public class CrearTransaccion {
     protected int monto;
 
     /**
-     * Gets the value of the origen property.
+     * Obtiene el valor de la propiedad origen.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class CrearTransaccion {
     }
 
     /**
-     * Sets the value of the origen property.
+     * Define el valor de la propiedad origen.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class CrearTransaccion {
     }
 
     /**
-     * Gets the value of the destino property.
+     * Obtiene el valor de la propiedad destino.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class CrearTransaccion {
     }
 
     /**
-     * Sets the value of the destino property.
+     * Define el valor de la propiedad destino.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class CrearTransaccion {
     }
 
     /**
-     * Gets the value of the monto property.
+     * Obtiene el valor de la propiedad monto.
      * 
      */
     public int getMonto() {
@@ -96,7 +96,7 @@ public class CrearTransaccion {
     }
 
     /**
-     * Sets the value of the monto property.
+     * Define el valor de la propiedad monto.
      * 
      */
     public void setMonto(int value) {

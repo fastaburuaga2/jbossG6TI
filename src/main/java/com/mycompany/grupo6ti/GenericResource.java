@@ -24,6 +24,7 @@ import javax.ws.rs.QueryParam;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -86,40 +87,102 @@ public class GenericResource {
                                 @PathParam("fechae") String fechae)
                             throws MalformedURLException, IOException
                                   {
-      HttpClient client = new DefaultHttpClient();
-        HttpPut put = new HttpPut("http://chiri.ing.puc.cl/atenea/crear");
+     try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/crear");
         
-        try {
-          List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-          nameValuePairs.add(new BasicNameValuePair("cliente",
-              cliente));
-          nameValuePairs.add(new BasicNameValuePair("proveedor",
-              proveedor));
-          nameValuePairs.add(new BasicNameValuePair("sku",
-              sku));
-          nameValuePairs.add(new BasicNameValuePair("cantidad",
-              cant));
-          nameValuePairs.add(new BasicNameValuePair("precioUnitario",
-              precio));
-          nameValuePairs.add(new BasicNameValuePair("canal",
-              canal));
-          nameValuePairs.add(new BasicNameValuePair("fechaEntrega",
-              fechae));
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("PUT");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+           String ss = "{\n" +
+           "  \"__v\": 0,\n" +
+           "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" +
+           "  \"updated_at\": \"2015-05-30T21:41:52.435Z\",\n" +
+           "  \"cliente\": \"123\",\n" +
+           "  \"proveedor\": \"asd\",\n" +
+           "  \"sku\": \"123\",\n" +
+           "  \"_id\": \"556a2ea0ddb5bd0300215729\",\n" +
+           "  \"estado\": \"creada\",\n" +
+           "  \"fechaDespachos\": [],\n" +
+           "  \"fechaEntrega\": \"2072-07-02T11:10:55.222Z\",\n" +
+           "  \"precioUnitario\": 32,\n" +
+           "  \"cantidadDespachada\": 0,\n" +
+           "  \"cantidad\": 123,\n" +
+           "  \"canal\": \"b2b\"\n" +
+           "}";
+
+
+           /*String s = "{" +
+           "  \"cliente\": "+cliente+"," +
+           "  \"proveedor\": "+proveedor+"," +
+           "  \"sku\": "+sku+"," +
+           "  \"cantidad\": "+cant+"," +
+           "  \"precioUnitario\": "+precio+"," +
+           "  \"canal\": "+canal+"," +
+           "  \"fechaEntrega\": "+fechae+
+           "}";*/
+           
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(ss);
+        out.flush();
+        out.close();
+        
+        
+               
+       /*
+         conn.setRequestProperty("Content-Type", "application/j");
+         conn.setRequestMethod("GET");
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         String result2 = "";
+         conn.setDoInput(true);
+         if (conn.getResponseCode() >= 400) {
+             result2 = "problema \n";
+            is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+         }
+        */
+        //conn.setRequestMethod("GET");
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                                   
+    //return httpCon.getResponseMessage();
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+    
+    
+    
+    //HOLA hola = new HOLA();
+        return ("[\"Test\", \"Funcionando Bien\"]");
+   
           
-          put.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-          HttpResponse response = client.execute(put);
-          BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-          String line = "";
-          while ((line = rd.readLine()) != null) {
-            System.out.println(line);
-          }
-          return line;
-
-        } catch (IOException e) {
-          e.printStackTrace();
-          return "error";
-        }       
   }
   
   
@@ -153,15 +216,49 @@ public class GenericResource {
     return "[\"Test\", \"Funcionando Bien\"]";
   }
   
-    @GET
+  @GET
   @Produces("application/json")
-  @Path("/anularOc/{id}")
-  public String obtenerOc(@PathParam("id") String id)
-                            
+  @Path("/obtenerOc/{id}")
+  public String obtenerOc(@PathParam("id") String id) throws MalformedURLException, IOException
                                   {
-      
-    return "[\"Test\", \"Funcionando Bien\"]";
-  }
+         String result = " ";
+       try {
+        String line;
+        
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/obtener/" + id);
+         
+   
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setRequestMethod("GET");
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         if (conn.getResponseCode() >= 400) {
+             //result = "problema \n";
+            is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+             //result = "no:problema \n";
+         }
+        
+           BufferedReader rd = new BufferedReader(new InputStreamReader(is)); 
+            
+               
+                  while ((line = rd.readLine()) != null) {
+                   result += line;
+                  }
+                  
+        // System.out.print(result);
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+       return result;
+    
+     }
   
   @POST //?
   @Produces("application/json")
@@ -276,4 +373,82 @@ public class GenericResource {
     @Consumes("application/xml")
     public void putXml(String content) {
     }
-}
+    
+    //SISTEMA FACTURAS-----------------------------------------------------
+    @PUT
+    @Produces("application/json")
+    @Path("/")
+    public void emitirFactura(){
+        
+    }
+    
+    @GET
+    @Produces("application/json")
+    @Path("/obtenerFactura/{id}")
+    public String obtenerFactura(@PathParam("id") String id){
+         String result = " ";
+       try {
+          
+    
+        String line;
+        
+         URL url = new URL("http://chiri.ing.puc.cl/zeuz/" + id);
+         
+   
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setRequestMethod("GET");
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         if (conn.getResponseCode() >= 400) {
+             //result = "problema \n";
+            is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+             //result = "no:problema \n";
+         }
+        
+           BufferedReader rd = new BufferedReader(new InputStreamReader(is)); 
+            
+               
+                  while ((line = rd.readLine()) != null) {
+                   result += line;
+                  }
+                  
+        // System.out.print(result);
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+   
+       return result;
+    }
+    }
+    /*
+    @POST
+    @Produces("application/json")
+    //@Produces("application/text")
+    @Path("/pay")
+    public void pagarFactura(){
+        
+    }
+    
+    @POST
+    @Produces("application/json")
+    //@Produces("application/text")
+    @Path("/reject")
+    public void rechazarFactura(){
+        
+    }
+    
+    @POST
+    @Produces("application/json")
+    //@Produces("application/text")
+    @Path("/cancel")
+    public void anularFactura(){
+        
+    }*/
+
