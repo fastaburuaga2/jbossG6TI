@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for badParameterItem complex type.
+ * <p>Clase Java para badParameterItem complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="badParameterItem">
@@ -40,7 +40,7 @@ public class BadParameterItem {
     protected String value;
 
     /**
-     * Gets the value of the msg property.
+     * Obtiene el valor de la propiedad msg.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class BadParameterItem {
     }
 
     /**
-     * Sets the value of the msg property.
+     * Define el valor de la propiedad msg.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class BadParameterItem {
     }
 
     /**
-     * Gets the value of the param property.
+     * Obtiene el valor de la propiedad param.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class BadParameterItem {
     }
 
     /**
-     * Sets the value of the param property.
+     * Define el valor de la propiedad param.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class BadParameterItem {
     }
 
     /**
-     * Gets the value of the value property.
+     * Obtiene el valor de la propiedad value.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class BadParameterItem {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define el valor de la propiedad value.
      * 
      * @param value
      *     allowed object is

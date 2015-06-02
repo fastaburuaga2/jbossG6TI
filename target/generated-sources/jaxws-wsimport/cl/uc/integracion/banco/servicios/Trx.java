@@ -28,8 +28,8 @@ public interface Trx {
      * @param trx
      * @return
      *     returns cl.uc.integracion.banco.servicios.Transaccion
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")
@@ -44,8 +44,8 @@ public interface Trx {
      * @param id
      * @return
      *     returns cl.uc.integracion.banco.servicios.TransaccionArray
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")
