@@ -24,6 +24,7 @@ import javax.ws.rs.QueryParam;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -139,8 +140,46 @@ public class GenericResource {
   public String rechazarOc(@PathParam("id") String id, 
                             @PathParam("rechazo") String rechazo)
                                   {
+                       
+        try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/rechazar/"+id);
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setUseCaches(true);
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+         conn.setDoInput(true);
+         
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write("rechazo="+ rechazo);
+        out.flush();
+        out.close();
+           
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         
+             return result2;
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
       
-    return "[\"Test\", \"Funcionando Bien\"]";
+    return "error";
   }
   
     @DELETE
@@ -149,18 +188,91 @@ public class GenericResource {
   public String anularOc(@PathParam("id") String id, 
                             @PathParam("motivo") String motivo)
                                   {
+                   
+        try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/anular/"+id);
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setUseCaches(true);
+         conn.setRequestMethod("DELETE");
+         conn.setDoOutput(true);
+         conn.setDoInput(true);
+         
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write("anulacion="+ motivo);
+        out.flush();
+        out.close();
+           
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         
+             return result2;
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
       
-    return "[\"Test\", \"Funcionando Bien\"]";
+    return "error";
+                                      
   }
   
     @GET
   @Produces("application/json")
-  @Path("/anularOc/{id}")
+  @Path("/obtenerOc/{id}")
   public String obtenerOc(@PathParam("id") String id)
                             
                                   {
       
-    return "[\"Test\", \"Funcionando Bien\"]";
+                    
+        try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/obtener/"+id);
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setUseCaches(true);
+         conn.setRequestMethod("GET");
+         conn.setDoOutput(true);
+         conn.setDoInput(true);
+           
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         
+             return result2;
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      
+    return "error";
   }
   
   @POST //?
@@ -169,8 +281,44 @@ public class GenericResource {
   public String despacharOc(@PathParam("id") String id)
                             
                                   {
-      
-    return "[\"Test\", \"Funcionando Bien\"]";
+           try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/despachar/"+id);
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setUseCaches(true);
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+         conn.setDoInput(true);
+         
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write("");
+        out.flush();
+        out.close();
+           
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+             
+             return result2;
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }                               
+    return "error";
   }
   
   
