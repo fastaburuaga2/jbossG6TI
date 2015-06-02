@@ -103,74 +103,32 @@ public class GenericResource {
         // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
          conn.setDoInput(true);
          
-         /*
-           String ss = "{\n" +
-           "  \"__v\": 0,\n" +
-           "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" +
-           "  \"updated_at\": \"2015-05-30T21:41:52.435Z\",\n" +
-           "  \"cliente\": \"123\",\n" +
-           "  \"proveedor\": \"asd\",\n" +
-           "  \"sku\": \"123\",\n" +
-           "  \"_id\": \"556a2ea0ddb5bd0300215729\",\n" +
-           "  \"estado\": \"creada\",\n" +
-           "  \"fechaDespachos\": [],\n" +
-           "  \"fechaEntrega\": \"2072-07-02T11:10:55.222Z\",\n" +
-           "  \"precioUnitario\": 32,\n" +
-           "  \"cantidadDespachada\": 0,\n" +
-           "  \"cantidad\": 123,\n" +
-           "  \"canal\": \"b2b\"\n" +
-           "}";*/
+         
 
             String sss = "{\n" +
-           "  \"__v\": 0,\n" +
-           "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" + //?
-           "  \"updated_at\": \"2015-05-30T21:41:52.435Z\",\n" + //?
+           //"  \"__v\": 0,\n" +
+          // "  \"created_at\": \"2015-05-30T21:41:52.435Z\",\n" + //?
+          // "  \"updated_at\": \"2015-05-30T21:41:52.435Z\",\n" + //?
            "  \"cliente\": \"" + cliente + "\",\n" +
            "  \"proveedor\": \"" + proveedor +  "\",\n" +
            "  \"sku\": \"" + sku + "\",\n" +
-           "  \"_id\": \"123\",\n" + //aca?
-           "  \"estado\": \"creada\",\n" +
-           "  \"fechaDespachos\": [],\n" + //aca?
+           //"  \"_id\": \"123\",\n" + //aca?
+           //"  \"estado\": \"creada\",\n" +
+           //"  \"fechaDespachos\": [],\n" + //aca?
            "  \"fechaEntrega\": \"" + fechae + "\",\n" +
            "  \"precioUnitario\": \"" + precio + "\",\n" + 
-           "  \"cantidadDespachada\": \"0\",\n" + //aca?
+           //"  \"cantidadDespachada\": \"0\",\n" + //aca?
            "  \"cantidad\": \"" +cant+ "\",\n" +
            "  \"canal\": \"" +canal + "\"\n" +
            "}";
-           /*
-            String s = "{\n" +
-           "  \"__v\": 0,\n" +
-           "  \"cliente\": "+cliente+"," +
-           "  \"proveedor\": "+proveedor+"," +
-           "  \"sku\": "+sku+"," +
-           "  \"cantidad\": "+cant+"," +
-           "  \"precioUnitario\": "+precio+"," +
-           "  \"canal\": "+canal+"," +
-           "  \"fechaEntrega\": "+fechae+
-           "}";
-            */
+          
            
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
         out.write(sss);
         out.flush();
         out.close();
         
-        
-               
-       /*
-         conn.setRequestProperty("Content-Type", "application/j");
-         conn.setRequestMethod("GET");
-        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-         String result2 = "";
-         conn.setDoInput(true);
-         if (conn.getResponseCode() >= 400) {
-             result2 = "problema \n";
-            is = conn.getErrorStream();
-            } else {
-             is = conn.getInputStream();
-         }
-        */
-        //conn.setRequestMethod("GET");
+       
         if (conn.getResponseCode() >= 400) {
              is = conn.getErrorStream();
             } else {
@@ -186,7 +144,6 @@ public class GenericResource {
          return result2;
          
                                    
-    //return httpCon.getResponseMessage();
          
       } catch (IOException e) {
          e.printStackTrace();
@@ -210,46 +167,57 @@ public class GenericResource {
   @Path("/recepcionarOc/{id}")
   public String recepcionarOc(@PathParam("id") String id) throws MalformedURLException, IOException
                                   {
-                                      
-                try{                     
-		URL url = new URL("http://chiri.ing.puc.cl/recepcionar/" + id);
-		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-                InputStream is;
-		//add reuqest header
-		con.setRequestMethod("POST");
-		con.setRequestProperty("Content-Type", "application/json");
-		//con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
- 
-		
-		con.setDoOutput(true);
-		OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
-                out.write("{\n" + "  \"id\": \"" + id + "\"\n" + "}");
-                out.flush();
-                out.close();
- 
-		
-                if (con.getResponseCode() >= 400) {
-                    is = con.getErrorStream();
-                } else {
-                 is = con.getInputStream();
-                  }
-		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
- 
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-                return response.toString();
-                }  catch (IOException e) {
-                    e.printStackTrace();
-                 } catch (Exception e) {
-                    e.printStackTrace();
-                  }
-		//print result
-		return "error";
- 
+                try {
+         URL url = new URL("http://chiri.ing.puc.cl/atenea/recepcionar/" + id);
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+            
+          String idJson = "{\n" + "  \"id\": \"" + id + "\"\n" + "}";
+          //String idJson2 = "[\"Test\", \"Funcionando Bien\"]";
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(idJson);
+        out.flush();
+        out.close();
+        
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                               
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+    
+    
+    
+    //HOLA hola = new HOLA();
+        return ("[\"Test\", \"Funcionando Bien\"]");
       
     
   }
@@ -435,9 +403,62 @@ public class GenericResource {
     //SISTEMA FACTURAS-----------------------------------------------------
     @PUT
     @Produces("application/json")
-    @Path("/")
-    public void emitirFactura(){
+    @Path("emitirFactura/{id_oC}")
+    public String emitirFactura(@PathParam("id_oC") String id_oC){
+         try {
+         URL url = new URL("http://chiri.ing.puc.cl/zeuz/");
         
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("PUT");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+            
+          String idJson = "{\n" + "  \"oc\": \"" + id_oC + "\"\n" + "}";
+          //String idJson2 = "[\"Test\", \"Funcionando Bien\"]";
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(idJson);
+        out.flush();
+        out.close();
+        
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                               
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+    
+    
+    
+    //HOLA hola = new HOLA();
+        return ("[\"Test\", \"Funcionando Bien\"]");
+      
+    
+  
     }
     
     @GET
@@ -484,29 +505,181 @@ public class GenericResource {
    
        return result;
     }
-    }
-    /*
-    @POST
-    @Produces("application/json")
-    //@Produces("application/text")
-    @Path("/pay")
-    public void pagarFactura(){
-        
-    }
+    
     
     @POST
     @Produces("application/json")
     //@Produces("application/text")
-    @Path("/reject")
-    public void rechazarFactura(){
+    @Path("/pagarFactura/{id}")
+    public String pagarFactura(@PathParam("id") String id){
+ try {
+         URL url = new URL("http://chiri.ing.puc.cl/zeuz/pay");
         
-    }
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+            
+          String idJson = "{\n" + "  \"id\": \"" + id + "\"\n" + "}";
+          //String idJson2 = "[\"Test\", \"Funcionando Bien\"]";
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(idJson);
+        out.flush();
+        out.close();
+        
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                               
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+        return ("[\"Test\", \"Funcionando Bien\"]");
+      
+    
+  }
+        
+    
     
     @POST
     @Produces("application/json")
     //@Produces("application/text")
-    @Path("/cancel")
-    public void anularFactura(){
+    @Path("/rechazarFactura/{id}/{motivo}")
+    public String rechazarFactura(@PathParam("id") String id, @PathParam("motivo") String motivo){
+        try {
+         URL url = new URL("http://chiri.ing.puc.cl/zeuz/reject/");
         
-    }*/
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+            
+          String idJson = "{\n" + "  \"id\": \"" +id+ "\",\n" +
+           "  \"motivo\": \"" +motivo + "\"\n" +
+           "}";
+          //String idJson2 = "[\"Test\", \"Funcionando Bien\"]";
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(idJson);
+        out.flush();
+        out.close();
+        
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                               
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+        return ("[\"Test\", \"Funcionando Bien\"]");
+      
+        
+    }
+
+    
+    @POST
+    @Produces("application/json")
+    //@Produces("application/text")
+    @Path("/cancelarFactura/{id}/{motivo}")
+    public String anularFactura(@PathParam("id") String id, @PathParam("motivo") String motivo){
+        try {
+         URL url = new URL("http://chiri.ing.puc.cl/zeuz/cancel/");
+        
+       
+         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+         InputStream is;
+         conn.setRequestProperty("Accept-Charset", "UTF-8");
+         conn.setRequestProperty("Content-Type", "application/json");
+         conn.setUseCaches(true);
+         //conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        // conn.setRequestProperty("Accept","*/*");
+         conn.setRequestMethod("POST");
+         conn.setDoOutput(true);
+        // conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+         conn.setDoInput(true);
+         
+         
+            
+         String idJson = "{\n" + "  \"id\": \"" +id+ "\",\n" +
+           "  \"motivo\": \"" +motivo + "\"\n" +
+           "}";
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+        out.write(idJson);
+        out.flush();
+        out.close();
+        
+        if (conn.getResponseCode() >= 400) {
+             is = conn.getErrorStream();
+            } else {
+             is = conn.getInputStream();
+        }
+         String result2 = "";
+         BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+         String line;
+         while ((line = rd.readLine()) != null) {
+            result2 += line;
+         }
+         rd.close();
+         return result2;
+         
+                               
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       
+        return ("[\"Test\", \"Funcionando Bien\"]");
+      
+        
+    }
+}
+
 
