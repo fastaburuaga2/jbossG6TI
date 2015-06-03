@@ -269,7 +269,7 @@ public class GenericResource {
                             @PathParam("motivo") String motivo)
                                   {
                  
-                
+               
         try {
          URL url = new URL("http://localhost:83/anular/" + id);
         
@@ -279,12 +279,16 @@ public class GenericResource {
          conn.setRequestProperty("Accept-Charset", "UTF-8");
          conn.setRequestProperty("Content-Type", "application/json");
          conn.setUseCaches(true);
-         conn.setRequestMethod("DELETE");
+         //conn.setRequestMethod("DELETE");
+         conn.setRequestMethod("POST");
+// We have to override the post method so we can send data
+            conn.setRequestProperty("X-HTTP-Method-Override", "DELETE");
+         
          conn.setDoOutput(true);
          conn.setDoInput(true);
          
          
-            String idJson = "{\n"  +
+            String idJson = "{\n"  + 
            "  \"anulacion\": \"" + motivo + "\"\n" +
            "}";
           
@@ -316,30 +320,7 @@ public class GenericResource {
          e.printStackTrace();
          return ("[\"Test\", \"Funcionando Bien2\"]");
       }
-        //--------------------------
-        //return ("[\"Test\", \"Funcionando Bien\"]");
-                           //---------------------------------------------------------------
-         /*HttpClient client = new DefaultHttpClient();
-        MyDelete delete = new MyDelete("http://localhost:83/anular/"+ id);
-        
-        try {
-          List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-          nameValuePairs.add(new BasicNameValuePair("anulacion",motivo));
-          
-          delete.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-          HttpResponse response = client.execute(delete);
-          BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-          String line = "";
-          while ((line = rd.readLine()) != null) {
-            line += line;
-          }
-            return line;
-
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-            return "no funca";     */                 
+               
   }
   
     @GET
@@ -461,7 +442,7 @@ public class GenericResource {
   
   
     //Metodo que permite ver las transferencias desde una fecha de inicio a una de termino
-    @GET
+    @POST
     @Produces("application/json")
     @Path("/cartola/{id}/{inicio}/{fin}/{limite}")
     public Cartola getCartola(  @PathParam("id") String id,
@@ -503,7 +484,7 @@ public class GenericResource {
   
     //Hacer transaccion
     
-    @POST
+    @PUT
     @Produces("application/json")
     @Path("/transaccion/{origen}/{destino}/{monto}/")
     public Transaccion hacerTransaccion(

@@ -442,7 +442,7 @@ public class GenericResource {
   
   
     //Metodo que permite ver las transferencias desde una fecha de inicio a una de termino
-    @GET
+    @POST
     @Produces("application/json")
     @Path("/cartola/{id}/{inicio}/{fin}/{limite}")
     public Cartola getCartola(  @PathParam("id") String id,
@@ -484,7 +484,7 @@ public class GenericResource {
   
     //Hacer transaccion
     
-    @POST
+    @PUT
     @Produces("application/json")
     @Path("/transaccion/{origen}/{destino}/{monto}/")
     public Transaccion hacerTransaccion(
