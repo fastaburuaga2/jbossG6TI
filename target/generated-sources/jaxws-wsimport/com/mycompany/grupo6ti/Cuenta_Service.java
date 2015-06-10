@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "Cuenta", targetNamespace = "http://servicios.banco.integracion.uc.cl/", wsdlLocation = "http://chiri.ing.puc.cl:8080/Banco/Cuenta?wsdl")
+@WebServiceClient(name = "Cuenta", targetNamespace = "http://servicios.banco.integracion.uc.cl/", wsdlLocation = "http://moyas.ing.puc.cl:8080/Banco/Cuenta?wsdl")
 public class Cuenta_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class Cuenta_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://chiri.ing.puc.cl:8080/Banco/Cuenta?wsdl");
+            url = new URL("http://moyas.ing.puc.cl:8080/Banco/Cuenta?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

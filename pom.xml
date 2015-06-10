@@ -108,10 +108,10 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>chiri.ing.puc.cl_8080/Banco/Cuenta.wsdl</wsdlFile>
+                                <wsdlFile>moyas.ing.puc.cl_8080/Banco/Cuenta.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName>com.mycompany.grupo6ti</packageName>
-                            <wsdlLocation>http://chiri.ing.puc.cl:8080/Banco/Cuenta?wsdl</wsdlLocation>
+                            <wsdlLocation>http://moyas.ing.puc.cl:8080/Banco/Cuenta?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/Cuenta.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-Cuenta</id>
@@ -123,10 +123,10 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>chiri.ing.puc.cl_8080/Banco/Trx.wsdl</wsdlFile>
+                                <wsdlFile>moyas.ing.puc.cl_8080/Banco/Trx.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName></packageName>
-                            <wsdlLocation>http://chiri.ing.puc.cl:8080/Banco/Trx?wsdl</wsdlLocation>
+                            <packageName>com.mycompany.grupo6ti</packageName>
+                            <wsdlLocation>http://moyas.ing.puc.cl:8080/Banco/Trx?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/Trx.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-Trx</id>

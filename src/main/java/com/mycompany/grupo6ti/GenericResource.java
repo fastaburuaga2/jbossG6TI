@@ -5,11 +5,7 @@
  */
 package com.mycompany.grupo6ti;
 
-import cl.uc.integracion.banco.servicios.CrearTransaccion;
-import cl.uc.integracion.banco.servicios.TransaccionArray;
-import cl.uc.integracion.banco.servicios.Trx;
-import cl.uc.integracion.banco.servicios.Trx_Service;
-import cl.uc.integracion.banco.servicios.Transaccion;
+
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -472,7 +468,7 @@ public class GenericResource {
     @GET
     @Produces("application/json")
     @Path("/transaccion/{id}")
-    public TransaccionArray getTransaccion(@PathParam("id") String id) throws cl.uc.integracion.banco.servicios.BadParametersException, cl.uc.integracion.banco.servicios.ErrorException {
+    public TransaccionArray getTransaccion(@PathParam("id") String id) throws BadParametersException, ErrorException {
 
       Trx_Service ts = new Trx_Service();
 
@@ -490,7 +486,7 @@ public class GenericResource {
     public Transaccion hacerTransaccion(
             @PathParam("origen") String origen,
             @PathParam("destino") String destino,
-            @PathParam("monto") String monto) throws cl.uc.integracion.banco.servicios.BadParametersException, cl.uc.integracion.banco.servicios.ErrorException {
+            @PathParam("monto") String monto) throws BadParametersException, ErrorException {
 
         Trx_Service ts = new Trx_Service();
 

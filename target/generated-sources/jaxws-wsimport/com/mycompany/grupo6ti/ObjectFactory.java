@@ -51,6 +51,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CrearTransaccion }
+     * 
+     */
+    public CrearTransaccion createCrearTransaccion() {
+        return new CrearTransaccion();
+    }
+
+    /**
+     * Create an instance of {@link TransaccionArray }
+     * 
+     */
+    public TransaccionArray createTransaccionArray() {
+        return new TransaccionArray();
+    }
+
+    /**
      * Create an instance of {@link Transaccion }
      * 
      */
@@ -59,43 +75,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CuentaBanco }
-     * 
-     */
-    public CuentaBanco createCuentaBanco() {
-        return new CuentaBanco();
-    }
-
-    /**
      * Create an instance of {@link BadParameterItem }
      * 
      */
     public BadParameterItem createBadParameterItem() {
         return new BadParameterItem();
-    }
-
-    /**
-     * Create an instance of {@link CuentaBancoArray }
-     * 
-     */
-    public CuentaBancoArray createCuentaBancoArray() {
-        return new CuentaBancoArray();
-    }
-
-    /**
-     * Create an instance of {@link Cartola }
-     * 
-     */
-    public Cartola createCartola() {
-        return new Cartola();
-    }
-
-    /**
-     * Create an instance of {@link GetCartola }
-     * 
-     */
-    public GetCartola createGetCartola() {
-        return new GetCartola();
     }
 
     /**

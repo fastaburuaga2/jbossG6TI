@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getCartola complex type.
+ * <p>Java class for getCartola complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getCartola">
@@ -45,7 +45,7 @@ public class GetCartola {
     protected int limit;
 
     /**
-     * Obtiene el valor de la propiedad inicio.
+     * Gets the value of the inicio property.
      * 
      */
     public float getInicio() {
@@ -53,7 +53,7 @@ public class GetCartola {
     }
 
     /**
-     * Define el valor de la propiedad inicio.
+     * Sets the value of the inicio property.
      * 
      */
     public void setInicio(float value) {
@@ -61,7 +61,7 @@ public class GetCartola {
     }
 
     /**
-     * Obtiene el valor de la propiedad fin.
+     * Gets the value of the fin property.
      * 
      */
     public float getFin() {
@@ -69,7 +69,7 @@ public class GetCartola {
     }
 
     /**
-     * Define el valor de la propiedad fin.
+     * Sets the value of the fin property.
      * 
      */
     public void setFin(float value) {
@@ -77,7 +77,7 @@ public class GetCartola {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class GetCartola {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class GetCartola {
     }
 
     /**
-     * Obtiene el valor de la propiedad limit.
+     * Gets the value of the limit property.
      * 
      */
     public int getLimit() {
@@ -109,7 +109,7 @@ public class GetCartola {
     }
 
     /**
-     * Define el valor de la propiedad limit.
+     * Sets the value of the limit property.
      * 
      */
     public void setLimit(int value) {

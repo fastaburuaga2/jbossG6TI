@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para transaccion complex type.
+ * <p>Java class for transaccion complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="transaccion">
@@ -55,7 +55,7 @@ public class Transaccion {
     protected String v;
 
     /**
-     * Obtiene el valor de la propiedad createdAt.
+     * Gets the value of the createdAt property.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad createdAt.
+     * Sets the value of the createdAt property.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad destino.
+     * Gets the value of the destino property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad destino.
+     * Sets the value of the destino property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad monto.
+     * Gets the value of the monto property.
      * 
      */
     public int getMonto() {
@@ -135,7 +135,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad monto.
+     * Sets the value of the monto property.
      * 
      */
     public void setMonto(int value) {
@@ -143,7 +143,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad origen.
+     * Gets the value of the origen property.
      * 
      * @return
      *     possible object is
@@ -155,7 +155,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad origen.
+     * Sets the value of the origen property.
      * 
      * @param value
      *     allowed object is
@@ -167,7 +167,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad updatedAt.
+     * Gets the value of the updatedAt property.
      * 
      * @return
      *     possible object is
@@ -179,7 +179,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad updatedAt.
+     * Sets the value of the updatedAt property.
      * 
      * @param value
      *     allowed object is
@@ -191,7 +191,7 @@ public class Transaccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad v.
+     * Gets the value of the v property.
      * 
      * @return
      *     possible object is
@@ -203,7 +203,7 @@ public class Transaccion {
     }
 
     /**
-     * Define el valor de la propiedad v.
+     * Sets the value of the v property.
      * 
      * @param value
      *     allowed object is

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para cartola complex type.
+ * <p>Java class for cartola complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="cartola">
@@ -47,7 +47,7 @@ public class Cartola {
     protected List<Transaccion> transacciones;
 
     /**
-     * Obtiene el valor de la propiedad fin.
+     * Gets the value of the fin property.
      * 
      */
     public float getFin() {
@@ -55,7 +55,7 @@ public class Cartola {
     }
 
     /**
-     * Define el valor de la propiedad fin.
+     * Sets the value of the fin property.
      * 
      */
     public void setFin(float value) {
@@ -63,7 +63,7 @@ public class Cartola {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class Cartola {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -87,7 +87,7 @@ public class Cartola {
     }
 
     /**
-     * Obtiene el valor de la propiedad inicio.
+     * Gets the value of the inicio property.
      * 
      */
     public float getInicio() {
@@ -95,7 +95,7 @@ public class Cartola {
     }
 
     /**
-     * Define el valor de la propiedad inicio.
+     * Sets the value of the inicio property.
      * 
      */
     public void setInicio(float value) {

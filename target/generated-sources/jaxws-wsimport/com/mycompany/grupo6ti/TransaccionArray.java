@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for cuentaBancoArray complex type.
+ * <p>Java class for transaccionArray complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="cuentaBancoArray">
+ * &lt;complexType name="transaccionArray">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="item" type="{http://servicios.banco.integracion.uc.cl/}cuentaBanco" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="item" type="{http://servicios.banco.integracion.uc.cl/}transaccion" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "cuentaBancoArray", propOrder = {
+@XmlType(name = "transaccionArray", propOrder = {
     "item"
 })
-public class CuentaBancoArray {
+public class TransaccionArray {
 
     @XmlElement(nillable = true)
-    protected List<CuentaBanco> item;
+    protected List<Transaccion> item;
 
     /**
      * Gets the value of the item property.
@@ -55,13 +55,13 @@ public class CuentaBancoArray {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CuentaBanco }
+     * {@link Transaccion }
      * 
      * 
      */
-    public List<CuentaBanco> getItem() {
+    public List<Transaccion> getItem() {
         if (item == null) {
-            item = new ArrayList<CuentaBanco>();
+            item = new ArrayList<Transaccion>();
         }
         return this.item;
     }

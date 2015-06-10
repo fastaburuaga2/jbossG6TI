@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para cuentaBanco complex type.
+ * <p>Java class for cuentaBanco complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="cuentaBanco">
@@ -52,7 +52,7 @@ public class CuentaBanco {
     protected String v;
 
     /**
-     * Obtiene el valor de la propiedad createdAt.
+     * Gets the value of the createdAt property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad createdAt.
+     * Sets the value of the createdAt property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Obtiene el valor de la propiedad grupo.
+     * Gets the value of the grupo property.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad grupo.
+     * Sets the value of the grupo property.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Obtiene el valor de la propiedad saldo.
+     * Gets the value of the saldo property.
      * 
      */
     public int getSaldo() {
@@ -132,7 +132,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad saldo.
+     * Sets the value of the saldo property.
      * 
      */
     public void setSaldo(int value) {
@@ -140,7 +140,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Obtiene el valor de la propiedad updatedAt.
+     * Gets the value of the updatedAt property.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad updatedAt.
+     * Sets the value of the updatedAt property.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Obtiene el valor de la propiedad v.
+     * Gets the value of the v property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class CuentaBanco {
     }
 
     /**
-     * Define el valor de la propiedad v.
+     * Sets the value of the v property.
      * 
      * @param value
      *     allowed object is

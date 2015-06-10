@@ -8,17 +8,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Error complex type.
+ * <p>Java class for Error complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Error">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="httpCode" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="eRROR_CODE" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="httpCode" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -30,45 +30,21 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Error", propOrder = {
-    "httpCode",
     "errorcode",
+    "httpCode",
     "description"
 })
 public class Error {
 
-    @XmlElement(required = true, type = Integer.class, nillable = true)
-    protected Integer httpCode;
     @XmlElement(name = "eRROR_CODE", required = true, type = Integer.class, nillable = true)
     protected Integer errorcode;
+    @XmlElement(required = true, type = Integer.class, nillable = true)
+    protected Integer httpCode;
     @XmlElement(required = true, nillable = true)
     protected String description;
 
     /**
-     * Obtiene el valor de la propiedad httpCode.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getHttpCode() {
-        return httpCode;
-    }
-
-    /**
-     * Define el valor de la propiedad httpCode.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setHttpCode(Integer value) {
-        this.httpCode = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad errorcode.
+     * Gets the value of the errorcode property.
      * 
      * @return
      *     possible object is
@@ -80,7 +56,7 @@ public class Error {
     }
 
     /**
-     * Define el valor de la propiedad errorcode.
+     * Sets the value of the errorcode property.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +68,31 @@ public class Error {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the httpCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getHttpCode() {
+        return httpCode;
+    }
+
+    /**
+     * Sets the value of the httpCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setHttpCode(Integer value) {
+        this.httpCode = value;
+    }
+
+    /**
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class Error {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
